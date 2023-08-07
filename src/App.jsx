@@ -1,15 +1,10 @@
-import { Header } from "./components/Header/header"
-import { ListSection } from "./components/ListSection/ListSection"
+import { HomePage } from "./pages/HomePage"
 
 export const App = () => {
 
   return (
     <>
-      <Header />
-
-      <main>
-        <ListSection />
-      </main>
+      <HomePage />
     </>
   )
 }
