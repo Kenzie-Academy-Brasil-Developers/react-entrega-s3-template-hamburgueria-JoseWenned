@@ -3,6 +3,9 @@ import { SectionList } from "../../components/SectionList"
 import { useEffect, useState } from "react"
 import { Api } from "../../services/Api"
 import { Modal } from "../../components/Modal"
+import { ToastContainer, toast } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export const HomePage = () => {
 
@@ -54,12 +57,23 @@ export const HomePage = () => {
 
     const handleAddProducts = (product) => {
 
-    
+        
         const isProductCart = addProduct.some((item) => item.id === product.id)
-
+        
         if(isProductCart) {
 
-            console.log("Has already been added")
+            
+                toast.error('Already added to cart', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    });
+            
 
         }else {
 
@@ -67,6 +81,17 @@ export const HomePage = () => {
             setIsModal(true)
             handleCount()
             setValueTotal(valueTotal + product.price)
+
+            toast.success('Added to cart', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
 
         }
 
@@ -100,6 +125,7 @@ export const HomePage = () => {
         setValueTotal(0)
 
         localStorage.removeItem("cartItems")
+
     }
     
     const handleSearch = () => {
@@ -117,6 +143,20 @@ export const HomePage = () => {
 
     return(
         <>
+                <ToastContainer
+                    // position="top-right"
+                    // autoClose={5000}
+                    // hideProgressBar={false}
+                    // newestOnTop={false}
+                    // closeOnClick
+                    // rtl={false}
+                    // pauseOnFocusLoss
+                    // draggable
+                    // pauseOnHover
+                    // theme="light"
+                />
+        
+
                 <Header 
 
                     setIsModal={setIsModal} 
@@ -125,9 +165,8 @@ export const HomePage = () => {
                     setSearchTerm={setSearchTerm}
                     handleSearch={handleSearch}
                    
-
                 />
-
+                
             <main>
                 <SectionList 
 
@@ -156,7 +195,6 @@ export const HomePage = () => {
                 
                 />
             )}
-
         </>
     )
     
