@@ -28,6 +28,11 @@ export const HomePage = () => {
 
         handleProducts() 
 
+        const CartItemsLocalStotage = localStorage.getItem("cartItems")
+        if(CartItemsLocalStotage){
+            setAddProduct(JSON.parse(CartItemsLocalStotage))
+        }
+
     }, [])
 
     const handleCount = () => {
@@ -65,12 +70,14 @@ export const HomePage = () => {
 
         }
 
+        localStorage.setItem("cartItems", JSON.stringify([...addProduct, product]))
+
     }
 
     const handleRemoveProduct = (product) => {
 
         const upDataCart = addProduct.filter((p) => p.id !== product.id)
-        
+
         if(upDataCart.length !== 0){
             
             const TotalValue = upDataCart.reduce((acc, current) => acc + current.price)
@@ -83,6 +90,7 @@ export const HomePage = () => {
         setAddProduct(upDataCart)
         handleSubCount()
 
+        localStorage.setItem("cartItems", JSON.stringify(upDataCart))
     }
     
     const handleSearch = () => {
