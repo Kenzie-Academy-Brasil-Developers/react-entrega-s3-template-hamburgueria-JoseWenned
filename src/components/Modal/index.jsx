@@ -2,16 +2,8 @@ import style from "./style.module.scss"
 import XModal from "../../assets/X.png"
 import trashModal from "../../assets/trash.png"
 
-export const Modal = ( { products, setIsModal, setAddProduct, handleRemoveProduct, setIsCount, valueTotal, setValueTotal, addProduct } ) => {
+export const Modal = ( { setIsModal, setAddProduct, handleRemoveProduct, setIsCount, valueTotal, addProduct, removeAll } ) => {
     
-
-    const removeAll = () => {
-
-        setIsCount(0)
-        setAddProduct([])
-        setValueTotal(0)
-
-    }
 
     const closeModal = () => {
         setIsModal(false)

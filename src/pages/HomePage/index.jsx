@@ -92,6 +92,15 @@ export const HomePage = () => {
 
         localStorage.setItem("cartItems", JSON.stringify(upDataCart))
     }
+
+    const removeAll = () => {
+
+        setIsCount(0)
+        setAddProduct([])
+        setValueTotal(0)
+
+        localStorage.removeItem("cartItems")
+    }
     
     const handleSearch = () => {
 
@@ -143,6 +152,7 @@ export const HomePage = () => {
                     isCount={isCount}
                     addProduct={addProduct}
                     products={products}
+                    removeAll={removeAll}
                 
                 />
             )}
