@@ -1,3 +1,120 @@
-.imageSearch {
-    background-color: #27AE60;
+.containerHeader {
+
+    width: 100%;
+    background-color: var(--color-gray-0);
+
+}
+
+.containerSubHeader{
+
+    max-width: 75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border: 1px solid black;
+
+    margin: 0 auto;
+    height: 9.5rem;
+    background-color: var(--color-gray-0);
+
+}
+
+.containerTitle{
+
+    display: flex;
+    align-items: center;
+
+    gap:0.3rem;
+    margin: 0 1rem;
+
+}
+
+.titleLogo {
+
+    font-weight: var(--font-weight-03);
+    font-size: var(--font-size-06);
+    font-family: var(--font-family-inter);
+    color: var(--color-gray-600);
+   
+}
+
+.titleSubLogo {
+
+    font-weight: var(--font-weight-03);
+    font-size: var(--font-size-04);
+    font-family: var(--font-family-inter);
+    color: var(--color-red);
+
+    margin-top: 0.2rem;
+
+}
+
+.containerImageCart {
+
+    margin: 0 1rem;
+    position: relative;
+
+}
+
+.containerImageSearch {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 2.75rem;
+    height: 2rem;
+    background-color: var(--color-green);
+
+    border-radius: .25rem;
+    right: 3rem;
+
+    position: relative;
+    right: 2.5rem;
+
+}
+
+.inputSearch {
+
+    width: 100%;
+    height: 2.75rem;
+    padding: 0 0.5rem;
+
+}
+
+.containerSearch {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 1rem;
+
+}
+
+.imageCart {
+
+    width: 1.3125rem;
+    height: 1.3125rem;
+
+}
+
+.count {
+
+    position: absolute;
+    bottom: 0.8rem;
+    left: 0.7rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 18px;
+    height: 18px;
+
+    font-size: var(--font-size-01);
+    color: var(--color-gray-0);
+    border-radius: 4px;
+    background-color: var(--color-green);
+
 }

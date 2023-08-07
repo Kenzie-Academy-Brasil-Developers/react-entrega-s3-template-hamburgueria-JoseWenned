@@ -18,34 +18,34 @@ export const Header = ( { setIsModal, isCount, setSearchTerm, searchTerm } ) => 
     }
 
     return(
-        <>
-            <div>
-                <h1>Burguer</h1>
-                <span>Kenzie</span>
-            </div> 
+        <header className={style.containerHeader}>
+            <div className={style.containerSubHeader}>
+                <div className={style.containerTitle}>
+                    <h1 className={style.titleLogo}>Burguer</h1>
+                    <span className={style.titleSubLogo}>Kenzie</span>
+                </div> 
 
-            <div>
-                <img onClick={openModal} src={imageCar} />
-                <span>{isCount}</span>
+                <div className={style.containerImageCart}>
+                    <img className={style.imageCart} onClick={openModal} src={imageCar} />
+                    <span className={style.count}>{isCount}</span>
+                </div>
+
+                <div className={style.containerSearch}>
+                    <input 
+                        className={style.inputSearch}
+                        type="text" 
+                        placeholder="Search"
+                        value={searchTerm}
+                        onChange={handleInputSearch} 
+
+                    />
+
+                    <div className={style.containerImageSearch}>
+                        <img src={imageSearch}/>
+                    </div>
+                   
+                </div>
             </div>
-
-            <div>
-                <input 
-                
-                    type="text" 
-                    placeholder="Search your burguer"
-                    value={searchTerm}
-                    onChange={handleInputSearch} 
-
-                />
-
-                <img 
-
-                    className={style.imageSearch} 
-                    src={imageSearch}
-
-                />
-            </div>
-        </>
+        </header>
     )
 }
