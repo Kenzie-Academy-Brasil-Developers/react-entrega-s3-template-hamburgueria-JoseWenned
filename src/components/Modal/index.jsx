@@ -34,7 +34,7 @@ export const Modal = ( { products, setIsModal, setAddProduct, handleRemoveProduc
                         <li key={product.id}>
                             <img src={product.img} />
                             <h3>{product.name}</h3>
-                            <img onClick={handleRemoveProduct} src={trashModal} alt="Excluir"/>
+                            <img onClick={() => handleRemoveProduct(product)} src={trashModal} alt="Excluir"/>
                         </li>
                     ))}
                 </ul>

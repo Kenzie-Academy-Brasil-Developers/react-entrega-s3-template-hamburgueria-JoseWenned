@@ -49,8 +49,7 @@ export const HomePage = () => {
 
     const handleAddProducts = (product) => {
 
-        
-
+    
         const isProductCart = addProduct.some((item) => item.id === product.id)
 
         if(isProductCart) {
@@ -70,15 +69,20 @@ export const HomePage = () => {
 
     const handleRemoveProduct = (product) => {
 
-        const upDateProduct = addProduct.filter((p) => p.id !== product.id)
-        const removedProduct = addProduct.find((p) => p.id === product.id)
-
-        const newValueTotal = valueTotal - removedProduct
-       
-        setAddProduct(upDateProduct)
-        setValueTotal(newValueTotal)
+        const upDataCart = addProduct.filter((p) => p.id !== product.id)
+        
+        if(upDataCart.length !== 0){
+            
+            const TotalValue = upDataCart.reduce((acc, current) => acc + current.price)
+            setValueTotal(TotalValue)
+          
+        
+        }
+        
+        setValueTotal(0)
+        setAddProduct(upDataCart)
         handleSubCount()
-    
+
     }
     
     const handleSearch = () => {

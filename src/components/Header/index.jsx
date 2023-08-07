@@ -14,8 +14,7 @@ export const Header = ( { setIsModal, isCount, setSearchTerm, searchTerm } ) => 
     const handleInputSearch = (event) => {
 
         setSearchTerm(event.target.value)
-        console.log(searchTerm)
-
+    
     }
 
     return(
