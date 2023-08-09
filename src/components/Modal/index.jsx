@@ -10,36 +10,47 @@ export const Modal = ( { setIsModal, setAddProduct, handleRemoveProduct, setIsCo
     }
 
     return(
-        
-        <div>
-            <header className={style.containerHeader}>
 
-                <h2>Shopping carts</h2>
-                <img onClick={closeModal} src={XModal} alt="Close"/>
+        <div className={style.overlay}>
+            <div className={style.container}>
+                <header className={style.containerHeader}>
 
-            </header>
+                    <h2 className={style.titleCart}>Shopping carts</h2>
+                    <p className={style.closeX} onClick={closeModal}>X</p>
 
-            {setAddProduct.length !== 0 ? 
-            <section>
-                <ul>
-                    {addProduct.map((product) => (
-                        <li key={product.id}>
-                            <img src={product.img} />
-                            <h3>{product.name}</h3>
-                            <img onClick={() => handleRemoveProduct(product)} src={trashModal} alt="Excluir"/>
-                        </li>
-                    ))}
-                </ul>
-            </section> : (<p>Cart empty</p>)}
-            
+                </header>
 
-            <footer>
+                {setAddProduct.length !== 0 ? 
+                <section className={style.constainerSection}>
+                    <ul>
+                     
+                        {addProduct.map((product) => (
+                            <li className={style.List} key={product.id}>
+                                <img className={style.imageProduct} src={product.img} />
+                                <div className={style.information}>
+                                    <h3 className={style.nameProduct}>{product.name}</h3>
+                                    <img className={style.trash} onClick={() => handleRemoveProduct(product)} src={trashModal} alt="Excluir"/>
+                                </div>
+                            </li>
+                        ))}
+                    
+                    </ul>
+                </section> : (<p>Cart empty</p>)}
+                
 
-                <p>Total</p>
-                <span>{valueTotal.toLocaleString("pt-BR", {style: "currency", currency: "BRL"})}</span>
-                <button type="submit" onClick={removeAll}>Remove All</button>
+                <footer className={style.containerFooter}>
 
-            </footer>
+                    <div className={style.containeTotal}>
+                        <p className={style.Total}>Total</p>
+                        <span className={style.Value}>{valueTotal.toLocaleString("pt-BR", {style: "currency", currency: "BRL"})}</span>
+                    </div>
+                    
+                    <div className={style.containerButton}>
+                        <button className={style.buttonRemove} type="submit" onClick={removeAll}>Remove All</button>
+                    </div>
+
+                </footer>
+            </div>
         </div>
         
     )
