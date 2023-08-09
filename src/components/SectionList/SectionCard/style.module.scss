@@ -1,0 +1,90 @@
+.containerCart {
+
+    border: .125rem solid var(--color-gray-100);
+    border-radius: .25rem;
+    margin-top: 2rem;
+
+    max-width: 40.75rem;
+    height: 22.5625rem;
+
+    &:hover {
+        border: 0.125rem solid var(--color-green);
+    }
+
+}
+
+.backgroundImage{
+
+    background-color: var(--color-gray-100);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.imageProduct {
+
+    width: 14.625rem;
+    height: 11.25rem;
+
+}
+
+.containerDescription {
+
+    margin: 1rem;
+    width: 100%;
+
+}
+
+.TitleCart {
+
+    font-family: var(--font-family-inter);
+    font-size: var(--font-size-04);
+    font-weight: var(--font-weight-03);
+
+    margin-top: 1.3rem;
+
+}
+
+.categories {
+
+    color: var(--color-gray-300);
+    font-family: var(--font-family-inter);
+    font-size: var(--font-size-02);
+
+    margin-top: 1rem;
+
+}
+
+.price {
+
+    color: var(--color-green);
+    font-family: var(--font-family-inter);
+    font-size: var(--font-size-02);
+
+    margin-top: 1rem;
+
+}
+
+.button {
+
+    color: var(--color-white);
+    font-family: var(--font-family-inter);
+    font-size: var(--font-size-02);
+
+    background-color: var(--color-gray-100);
+    border: none;
+
+    width: 6.625rem;
+    height: 2.5rem;
+
+    border-radius: .5rem;
+
+    margin-top: 1rem;
+
+    &:hover {
+        background-color: var(--color-green);
+    }
+
+}

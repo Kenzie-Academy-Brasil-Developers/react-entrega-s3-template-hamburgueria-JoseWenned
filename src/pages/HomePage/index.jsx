@@ -108,10 +108,9 @@ export const HomePage = () => {
             const TotalValue = upDataCart.reduce((acc, current) => acc + current.price)
             setValueTotal(TotalValue)
           
-        
-        }
-        
-        setValueTotal(0)
+        } 
+
+        setValueTotal(valueTotal - product.price)
         setAddProduct(upDataCart)
         handleSubCount()
 

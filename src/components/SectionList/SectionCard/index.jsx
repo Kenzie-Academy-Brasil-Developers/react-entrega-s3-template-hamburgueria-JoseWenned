@@ -1,14 +1,25 @@
-    export const SectionCard = ( { product, handleAddProducts } ) => {
+import style from "./style.module.scss"
+
+export const SectionCard = ( { product, handleAddProducts } ) => {
     
     return(
 
-        <li>
+        <li className={style.containerCart}>
 
-            <img src={product.img} />
-            <h3>{product.name}</h3>
-            <p>{product.category}</p>
-            <p>{product.price}</p>
-            <button onClick={() => handleAddProducts(product)} type="submit">To add</button>
+            <div className={style.backgroundImage}>
+
+                <img className={style.imageProduct} src={product.img} />
+
+            </div>
+
+            <div className={style.containerDescription}> 
+
+                <h3 className={style.TitleCart}>{product.name}</h3>
+                <p className={style.categories}>{product.category}</p>
+                <p className={style.price}>{product.price.toLocaleString("pt-BR", {style: "currency", currency: "BRL"})}</p>
+                <button className={style.button} onClick={() => handleAddProducts(product)} type="submit">To add</button>
+
+            </div>
 
         </li>
 

@@ -20,17 +20,20 @@ export const Header = ( { setIsModal, isCount, setSearchTerm, searchTerm } ) => 
     return(
         <header className={style.containerHeader}>
             <div className={style.containerSubHeader}>
+
                 <div className={style.containerTitle}>
                     <h1 className={style.titleLogo}>Burguer</h1>
                     <span className={style.titleSubLogo}>Kenzie</span>
+
+
+                    <div className={style.containerImageCart}>
+                        <img className={style.imageCart} onClick={openModal} src={imageCar} />
+                        <span className={style.count}>{isCount}</span>
+                    </div>
                 </div> 
 
-                <div className={style.containerImageCart}>
-                    <img className={style.imageCart} onClick={openModal} src={imageCar} />
-                    <span className={style.count}>{isCount}</span>
-                </div>
-
                 <div className={style.containerSearch}>
+
                     <input 
                         className={style.inputSearch}
                         type="text" 
@@ -43,7 +46,7 @@ export const Header = ( { setIsModal, isCount, setSearchTerm, searchTerm } ) => 
                     <div className={style.containerImageSearch}>
                         <img src={imageSearch}/>
                     </div>
-                   
+            
                 </div>
             </div>
         </header>
