@@ -13,8 +13,9 @@ export const HomePage = () => {
     const [addProduct, setAddProduct] = useState([])
     const [isModal, setIsModal] = useState(false)
     const [isCount, setIsCount] = useState(0)
-    const [valueTotal, setValueTotal] = useState(0)
+    const [valueTotal, setValueTotal] = useState(JSON.parse(localStorage.getItem("cartValueTotal")) || 0)
     const [searchTerm, setSearchTerm] = useState("")
+    console.log(valueTotal)
 
     useEffect(() => {
 
@@ -31,12 +32,13 @@ export const HomePage = () => {
 
         handleProducts() 
 
-        const CartItemsLocalStotage = localStorage.getItem("cartItems")
-        if(CartItemsLocalStotage){
-            setAddProduct(JSON.parse(CartItemsLocalStotage))
-        }
-
     }, [])
+
+    useEffect(() => {
+
+        localStorage.setItem("cartValueTotal", JSON.stringify(valueTotal))
+
+    }, [valueTotal])
 
     const handleCount = () => {
         setIsCount(isCount + 1)
@@ -78,7 +80,6 @@ export const HomePage = () => {
         }else {
 
             setAddProduct([...addProduct, product])
-            setIsModal(true)
             handleCount()
             setValueTotal(valueTotal + product.price)
 
@@ -105,7 +106,7 @@ export const HomePage = () => {
 
         if(upDataCart.length !== 0){
             
-            const TotalValue = upDataCart.reduce((acc, current) => acc + current.price)
+            const TotalValue = upDataCart.reduce((acc, current) => acc + current.price, 0)
             setValueTotal(TotalValue)
           
         } 
@@ -115,6 +116,7 @@ export const HomePage = () => {
         handleSubCount()
 
         localStorage.setItem("cartItems", JSON.stringify(upDataCart))
+
     }
 
     const removeAll = () => {
@@ -124,6 +126,7 @@ export const HomePage = () => {
         setValueTotal(0)
 
         localStorage.removeItem("cartItems")
+        localStorage.removeItem("cartValueTotal")
 
     }
     

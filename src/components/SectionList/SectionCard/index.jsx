@@ -8,7 +8,7 @@ export const SectionCard = ( { product, handleAddProducts } ) => {
 
             <div className={style.backgroundImage}>
 
-                <img className={style.imageProduct} src={product.img} />
+                <img src={product.img} />
 
             </div>
 
