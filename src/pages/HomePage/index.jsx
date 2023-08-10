@@ -12,7 +12,7 @@ export const HomePage = () => {
     const [products, setProductList] = useState([])
     const [addProduct, setAddProduct] = useState([])
     const [isModal, setIsModal] = useState(false)
-    const [isCount, setIsCount] = useState(0)
+    const [isCount, setIsCount] = useState(JSON.parse(localStorage.getItem("cartItemCount")) || 0)
     const [valueTotal, setValueTotal] = useState(JSON.parse(localStorage.getItem("cartValueTotal")) || 0)
     const [searchTerm, setSearchTerm] = useState("")
     console.log(valueTotal)
@@ -39,6 +39,12 @@ export const HomePage = () => {
         localStorage.setItem("cartValueTotal", JSON.stringify(valueTotal))
 
     }, [valueTotal])
+
+    useEffect(() => {
+
+        localStorage.setItem("cartItemCount", JSON.stringify(isCount))
+        
+    }, [isCount])
 
     const handleCount = () => {
         setIsCount(isCount + 1)
