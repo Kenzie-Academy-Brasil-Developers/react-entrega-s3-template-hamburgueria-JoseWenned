@@ -1,9 +1,12 @@
 import style from "./style.module.scss"
 import XModal from "../../assets/X.png"
 import trashModal from "../../assets/trash.png"
+import { useContext } from "react"
+import { TodoContext } from "../../providers"
 
-export const Modal = ( { setIsModal, setAddProduct, handleRemoveProduct, setIsCount, valueTotal, addProduct, removeAll } ) => {
+export const Modal = () => {
     
+    const { setIsModal, setAddProduct, handleRemoveProduct, valueTotal, addProduct, removeAll } = useContext(TodoContext)
 
     const closeModal = () => {
         setIsModal(false)

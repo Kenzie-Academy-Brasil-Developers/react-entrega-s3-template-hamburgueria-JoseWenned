@@ -1,195 +1,27 @@
 import { Header } from "../../components/Header"
 import { SectionList } from "../../components/SectionList"
-import { useEffect, useState } from "react"
-import { Api } from "../../services/Api"
 import { Modal } from "../../components/Modal"
 import { ToastContainer, toast } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
-
+import { useContext } from "react"
+import { TodoContext } from "../../providers"
 
 export const HomePage = () => {
 
-    const [products, setProductList] = useState([])
-    const [addProduct, setAddProduct] = useState([])
-    const [isModal, setIsModal] = useState(false)
-    const [isCount, setIsCount] = useState(JSON.parse(localStorage.getItem("cartItemCount")) || 0)
-    const [valueTotal, setValueTotal] = useState(JSON.parse(localStorage.getItem("cartValueTotal")) || 0)
-    const [searchTerm, setSearchTerm] = useState("")
-    console.log(valueTotal)
-
-    useEffect(() => {
-
-        const handleProducts = async () => {
-
-            try{
-                const {data} = await Api.get("/products")
-                setProductList(data)
-            } catch (error) {
-                console.log(error)
-            }
-
-        }
-
-        handleProducts() 
-
-    }, [])
-
-    useEffect(() => {
-
-        localStorage.setItem("cartValueTotal", JSON.stringify(valueTotal))
-
-    }, [valueTotal])
-
-    useEffect(() => {
-
-        localStorage.setItem("cartItemCount", JSON.stringify(isCount))
-        
-    }, [isCount])
-
-    const handleCount = () => {
-        setIsCount(isCount + 1)
-    }
-
-    const handleSubCount = () => {
-        setIsCount(isCount - 1)
-    }
-
-    const addValueTotal = () => {
-
-        if(addProduct.length === 0){
-            return 0
-        }
-
-        const Total = products.reduce((acc, current) => acc + current.price)
-    }
-
-    const handleAddProducts = (product) => {
-
-        
-        const isProductCart = addProduct.some((item) => item.id === product.id)
-        
-        if(isProductCart) {
-
-            
-                toast.error('Already added to cart', {
-                    position: "top-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                    });
-            
-
-        }else {
-
-            setAddProduct([...addProduct, product])
-            handleCount()
-            setValueTotal(valueTotal + product.price)
-
-            toast.success('Added to cart', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-                });
-
-        }
-
-        localStorage.setItem("cartItems", JSON.stringify([...addProduct, product]))
-
-    }
-
-    const handleRemoveProduct = (product) => {
-
-        const upDataCart = addProduct.filter((p) => p.id !== product.id)
-
-        if(upDataCart.length !== 0){
-            
-            const TotalValue = upDataCart.reduce((acc, current) => acc + current.price, 0)
-            setValueTotal(TotalValue)
-          
-        } 
-
-        setValueTotal(valueTotal - product.price)
-        setAddProduct(upDataCart)
-        handleSubCount()
-
-        localStorage.setItem("cartItems", JSON.stringify(upDataCart))
-
-    }
-
-    const removeAll = () => {
-
-        setIsCount(0)
-        setAddProduct([])
-        setValueTotal(0)
-
-        localStorage.removeItem("cartItems")
-        localStorage.removeItem("cartValueTotal")
-
-    }
-    
-    const handleSearch = () => {
-
-        setSearchTerm(searchTerm)
-
-    }
-
-    const FilteredProductsList = products.filter((product) => {
-
-        return product.name.toLowerCase().includes(searchTerm.toLowerCase())
-
-    })
-
+    const { isModal } = useContext(TodoContext)
 
     return(
         <>
-                <ToastContainer/>
+            <ToastContainer/>
     
-                <Header 
-
-                    setIsModal={setIsModal} 
-                    isCount={isCount} 
-                    searchTerm={searchTerm} 
-                    setSearchTerm={setSearchTerm}
-                    handleSearch={handleSearch}
-                   
-                />
+            <Header />
                 
             <main>
-                <SectionList 
-
-                    searchTerm={searchTerm} 
-                    products={products} 
-                    handleAddProducts={handleAddProducts}
-                    FilteredProductsList={FilteredProductsList}
-
-                />
+                <SectionList />
             </main>
 
             {isModal && (
-                <Modal 
-                 
-                    setIsModal={setIsModal} 
-                    setAddProduct={setAddProduct}
-                    handleRemoveProduct={handleRemoveProduct}
-                    setIsCount={setIsCount}
-                    addValueTotal={addValueTotal}
-                    valueTotal={valueTotal}
-                    setValueTotal={setValueTotal}
-                    isCount={isCount}
-                    addProduct={addProduct}
-                    products={products}
-                    removeAll={removeAll}
-                
-                />
+                <Modal />
             )}
         </>
     )

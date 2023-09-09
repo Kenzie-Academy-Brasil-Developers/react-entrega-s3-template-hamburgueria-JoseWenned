@@ -1,6 +1,10 @@
+import { useContext } from "react"
 import style from "./style.module.scss"
+import { TodoContext } from "../../../providers"
 
-export const SectionCard = ( { product, handleAddProducts } ) => {
+export const SectionCard = ({ product }) => {
+
+    const {  handleAddProducts } = useContext(TodoContext)
     
     return(
 

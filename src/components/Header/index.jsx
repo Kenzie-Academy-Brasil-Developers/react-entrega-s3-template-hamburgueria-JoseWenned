@@ -1,9 +1,13 @@
-
+import { Input } from "../../fragments/Input"
+import { useContext } from "react"
 import imageCar from "../../assets/car.png"
 import imageSearch from "../../assets/interrogation.png"
 import style from "./style.module.scss"
+import { TodoContext } from "../../providers"
 
-export const Header = ( { setIsModal, isCount, setSearchTerm, searchTerm } ) => {
+export const Header = () => {
+
+    const { setIsModal, isCount, setSearchTerm, searchTerm } = useContext(TodoContext)
     
     const openModal = () => {
 
@@ -37,13 +41,12 @@ export const Header = ( { setIsModal, isCount, setSearchTerm, searchTerm } ) => 
 
                 <div className={style.containerSearch}>
 
-                    <input 
+                    <Input
                         className={style.inputSearch}
                         type="text" 
                         placeholder="Search"
                         value={searchTerm}
                         onChange={handleInputSearch} 
-
                     />
 
                     <div className={style.containerImageSearch}>
