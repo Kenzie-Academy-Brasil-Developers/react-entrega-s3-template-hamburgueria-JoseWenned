@@ -40,16 +40,6 @@ export const ThemeContext = ( { children } ) => {
         setIsCount(isCount - 1)
     }
 
-    
-    const addValueTotal = () => {
-
-        if(addProduct.length === 0){
-            return 0
-        }
-
-        const Total = listProduct.reduce((acc, current) => acc + current.price)
-    }
-
     const handleAddProducts = (product) => {
 
         const isProductCart = addProduct.some((item) => item.id === product.id)
@@ -134,7 +124,6 @@ export const ThemeContext = ( { children } ) => {
 
     return(
         <TodoContext.Provider value={{ 
-            addValueTotal, 
             handleAddProducts, 
             handleRemoveProduct, 
             removeAll,

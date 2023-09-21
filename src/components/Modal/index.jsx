@@ -1,5 +1,4 @@
 import style from "./style.module.scss"
-import XModal from "../../assets/X.png"
 import trashModal from "../../assets/trash.png"
 import { useContext } from "react"
 import { TodoContext } from "../../providers"
